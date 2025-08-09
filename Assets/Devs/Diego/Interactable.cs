@@ -2,15 +2,44 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    
+    public float limitRot;
+    public Transform initialRotation;
+    
+    [Header("Corrections")]
+    public bool flipSign;
+    public bool xAxis;
+
+
     void Start()
     {
-        
+        initialRotation = transform;
     }
 
-    // Update is called once per frame
-    void Update()
+
+    public void Open(float axisModifier)
     {
-        
+        float modifiedAxisModifier = flipSign
+            ? Mathf.Clamp(axisModifier, limitRot, 0)
+            : Mathf.Clamp(axisModifier, 0, limitRot);
+
+        Vector3 finalEuler;
+
+        if (xAxis)
+        {
+            finalEuler = new Vector3(modifiedAxisModifier, transform.localEulerAngles.y, transform.localEulerAngles.z);
+        }
+        else
+        {
+            finalEuler = new Vector3(transform.localEulerAngles.x, modifiedAxisModifier, transform.localEulerAngles.z);
+        }
+
+        transform.localEulerAngles = finalEuler;
+    }
+
+
+    public void Close()
+    {
+        transform.rotation = initialRotation.rotation;
     }
 }

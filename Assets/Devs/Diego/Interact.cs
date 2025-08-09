@@ -19,8 +19,6 @@ public class Interact : MonoBehaviour
     [Header("Rotation Behaviour")]
     
     public float rayLengthMove;
-    public float minRot;
-    public float maxRot;
     public GameObject staticPart;
     public GameObject movablePart;
     public GameObject playerCamera;
@@ -86,15 +84,20 @@ public class Interact : MonoBehaviour
                 continousMousePos = Input.mousePosition;
                 xDiff = continousMousePos.x - clickPos.x;
                 yDiff = continousMousePos.y - clickPos.y;
+                movablePart.GetComponent<Interactable>().Open(yDiff);
             }
             if (Input.GetMouseButtonUp(0) && canClick)
             {
+                
                 clickPos = new Vector2(0, 0);
                 continousMousePos = new Vector2(0, 0);
                 xDiff = 0;
                 yDiff = 0;
-                movablePart = null;
+                
+                
                 canClick = false;
+                movablePart.GetComponent<Interactable>().Close();
+                movablePart = null;
             }
         }
 
@@ -105,7 +108,5 @@ public class Interact : MonoBehaviour
     {
         GetComponent<Camera>().transform.position = newCameraPos.position;
         GetComponent<Camera>().transform.rotation = newCameraPos.rotation;
-
-
     }
 }
