@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &20962947
 Transform:
   m_ObjectHideFlags: 0
@@ -1360,7 +1360,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &194899286
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,10 +1392,10 @@ MonoBehaviour:
   HiddenPrefab: {fileID: 9120473134807710615, guid: 3bb02a3f7c283b74289cce558aa4bf92, type: 3}
   MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
   ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
-  NuCarnivoros: 2
-  NuHidden: 0
-  NuMelodicos: 0
-  NuShadow: 0
+  NuCarnivoros: 1
+  NuHidden: 1
+  NuMelodicos: 1
+  NuShadow: 1
   RoomObjects:
   - {fileID: 131095338}
   - {fileID: 1898764804}
@@ -5154,7 +5154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &657890671
 Transform:
   m_ObjectHideFlags: 0
@@ -5168,6 +5168,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1381823869}
   - {fileID: 194899286}
   - {fileID: 884393020}
   - {fileID: 448800555}
@@ -9725,6 +9726,169 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1375395969}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1381823868
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1381823869}
+  - component: {fileID: 1381823870}
+  m_Layer: 0
+  m_Name: EnemySpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1381823869
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381823868}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 657890671}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1381823870
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1381823868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85eaeb421a6069548bac03b99adb495c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  CarnivoroPrefab: {fileID: 695142455555852393, guid: 6919fa3616f2a814ba75a57ce36b9353, type: 3}
+  HiddenPrefab: {fileID: 9120473134807710615, guid: 3bb02a3f7c283b74289cce558aa4bf92, type: 3}
+  MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
+  ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
+  NuCarnivoros: 1
+  NuHidden: 1
+  NuMelodicos: 1
+  NuShadow: 1
+  RoomObjects:
+  - {fileID: 131095338}
+  - {fileID: 1898764804}
+  - {fileID: 393787737}
+  - {fileID: 1425957231}
+  - {fileID: 736381878}
+  - {fileID: 542851590}
+  - {fileID: 753486705}
+  - {fileID: 545023806}
+  - {fileID: 1697452391}
+  - {fileID: 1583699604}
+  - {fileID: 1328046792}
+  - {fileID: 433240433}
+  - {fileID: 1144261387}
+  - {fileID: 172918075}
+  - {fileID: 1113209521}
+  - {fileID: 1356322200}
+  - {fileID: 389506541}
+  - {fileID: 2065399403}
+  - {fileID: 1412572098}
+  - {fileID: 1790760674}
+  - {fileID: 961472821}
+  - {fileID: 536852466}
+  - {fileID: 1108189566}
+  - {fileID: 858894399}
+  - {fileID: 1961536064}
+  - {fileID: 1767083195}
+  - {fileID: 2133086588}
+  - {fileID: 618308333}
+  - {fileID: 2109066412}
+  - {fileID: 2000003511}
+  - {fileID: 1534702352}
+  - {fileID: 1731695192}
+  - {fileID: 527836221}
+  - {fileID: 1433455005}
+  - {fileID: 1734963505}
+  - {fileID: 1925826401}
+  - {fileID: 390812764}
+  - {fileID: 739499215}
+  - {fileID: 961642318}
+  - {fileID: 2019409172}
+  - {fileID: 1164548069}
+  - {fileID: 1934993974}
+  - {fileID: 2093822808}
+  - {fileID: 957290561}
+  - {fileID: 1169486501}
+  - {fileID: 601164498}
+  - {fileID: 1243132406}
+  - {fileID: 1008673539}
+  - {fileID: 1968160591}
+  - {fileID: 926265023}
+  - {fileID: 1968410337}
+  - {fileID: 2035414034}
+  - {fileID: 476697407}
+  - {fileID: 980822768}
+  - {fileID: 1576270590}
+  - {fileID: 391343010}
+  - {fileID: 1482358982}
+  - {fileID: 46671233}
+  - {fileID: 284090777}
+  - {fileID: 1852084703}
+  - {fileID: 2118762587}
+  - {fileID: 1233879210}
+  - {fileID: 753388151}
+  - {fileID: 444371203}
+  CarnivoroObjects:
+  - {fileID: 961472821}
+  - {fileID: 536852466}
+  - {fileID: 1108189566}
+  - {fileID: 858894399}
+  - {fileID: 131095338}
+  - {fileID: 1898764804}
+  - {fileID: 393787737}
+  - {fileID: 1425957231}
+  - {fileID: 1961536064}
+  - {fileID: 1767083195}
+  - {fileID: 2133086588}
+  - {fileID: 618308333}
+  - {fileID: 527836221}
+  - {fileID: 1433455005}
+  - {fileID: 1734963505}
+  - {fileID: 1925826401}
+  - {fileID: 1169486501}
+  - {fileID: 601164498}
+  - {fileID: 1243132406}
+  - {fileID: 1008673539}
+  - {fileID: 736381878}
+  - {fileID: 542851590}
+  - {fileID: 753486705}
+  - {fileID: 545023806}
+  - {fileID: 476697407}
+  - {fileID: 980822768}
+  - {fileID: 1576270590}
+  - {fileID: 391343010}
+  HiddenObjects:
+  - {fileID: 961472821}
+  - {fileID: 536852466}
+  - {fileID: 1108189566}
+  - {fileID: 858894399}
+  - {fileID: 131095338}
+  - {fileID: 1898764804}
+  - {fileID: 393787737}
+  - {fileID: 1425957231}
+  - {fileID: 527836221}
+  - {fileID: 1433455005}
+  - {fileID: 1734963505}
+  - {fileID: 1925826401}
+  - {fileID: 1169486501}
+  - {fileID: 601164498}
+  - {fileID: 1243132406}
+  - {fileID: 1008673539}
 --- !u!1 &1400665213
 GameObject:
   m_ObjectHideFlags: 0
