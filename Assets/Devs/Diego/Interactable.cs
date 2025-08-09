@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
-    
+    public Transform cameraPos;
     public float limitRot;
     public Transform initialRotation;
+    [Range(0f,0.5f)]
+    public float speed;
     
     [Header("Corrections")]
     public bool flipSign;
@@ -20,8 +22,8 @@ public class Interactable : MonoBehaviour
     public void Open(float axisModifier)
     {
         float modifiedAxisModifier = flipSign
-            ? Mathf.Clamp(axisModifier, limitRot, 0)
-            : Mathf.Clamp(axisModifier, 0, limitRot);
+            ? Mathf.Clamp(-axisModifier * speed , limitRot, 0)
+            : Mathf.Clamp(axisModifier * speed, 0, limitRot);
 
         Vector3 finalEuler;
 
@@ -40,6 +42,6 @@ public class Interactable : MonoBehaviour
 
     public void Close()
     {
-        transform.rotation = initialRotation.rotation;
+        transform.localEulerAngles = new Vector3(0,0,0);
     }
 }

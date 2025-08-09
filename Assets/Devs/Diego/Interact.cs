@@ -5,6 +5,7 @@ public class Interact : MonoBehaviour
 {
     [Header("General Behaviour")]
     public bool isInteracting;
+    public Controller controller;
     Ray ray;
     [Header("Interact Behaviour")]
     
@@ -53,6 +54,9 @@ public class Interact : MonoBehaviour
                 {
                     InteractWithObject(hit.collider.gameObject);
                     isInteracting=true;
+                    gameObject.GetComponent<MouseLook>().isInteracting = true;
+                    controller.isInteracting=true;
+                    
                 }
             }
         }
@@ -63,6 +67,8 @@ public class Interact : MonoBehaviour
                 GetComponent<Camera>().transform.position = originalCameraPos.position;
                 GetComponent<Camera>().transform.rotation = originalCameraPos.rotation;
                 isInteracting = false;
+                gameObject.GetComponent<MouseLook>().isInteracting=false;
+                controller.isInteracting = false;
             }
             
             raylength = rayLengthMove;
@@ -106,6 +112,7 @@ public class Interact : MonoBehaviour
 
     public void InteractWithObject(GameObject target)
     {
+        newCameraPos = target.GetComponentInChildren<Interactable>().cameraPos;
         GetComponent<Camera>().transform.position = newCameraPos.position;
         GetComponent<Camera>().transform.rotation = newCameraPos.rotation;
     }
