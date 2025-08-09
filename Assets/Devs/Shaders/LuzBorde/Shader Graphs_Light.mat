@@ -42,7 +42,7 @@ Material:
         m_Offset: {x: 0, y: 0}
     m_Ints: []
     m_Floats:
-    - _Emission: 122.12
+    - _Emission: 5.5
     - _Emssion: 1.44
     - _Float: 1.08
     - _Line: 0
