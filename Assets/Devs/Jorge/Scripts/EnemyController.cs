@@ -21,7 +21,7 @@ public class EnemyController : MonoBehaviour
 
     void Start()
     {
-        // Filtramos objetos activos y hacemos copia para modificar sin afectar original
+        // Reivisamos los objetos activos y se hace una copia, para que el oriiginal no se altere
         List<GameObject> AvailableObjects = RoomObjects.Where(o => o != null && o.activeSelf).ToList();
 
         SpawnEnemiesOfType(CarnivoroPrefab, NuCarnivoros, ref AvailableObjects);

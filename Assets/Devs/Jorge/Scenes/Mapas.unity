@@ -242,7 +242,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &20962947
 Transform:
   m_ObjectHideFlags: 0
@@ -1392,10 +1392,10 @@ MonoBehaviour:
   HiddenPrefab: {fileID: 9120473134807710615, guid: 3bb02a3f7c283b74289cce558aa4bf92, type: 3}
   MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
   ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
-  NuCarnivoros: 1
-  NuHidden: 1
-  NuMelodicos: 1
-  NuShadow: 1
+  NuCarnivoros: 2
+  NuHidden: 0
+  NuMelodicos: 0
+  NuShadow: 0
   RoomObjects:
   - {fileID: 131095338}
   - {fileID: 1898764804}
@@ -5154,7 +5154,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &657890671
 Transform:
   m_ObjectHideFlags: 0
@@ -9347,8 +9347,8 @@ MonoBehaviour:
   MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
   ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
   NuCarnivoros: 1
-  NuHidden: 1
-  NuMelodicos: 1
+  NuHidden: 0
+  NuMelodicos: 0
   NuShadow: 1
   RoomObjects:
   - {fileID: 806695302}
