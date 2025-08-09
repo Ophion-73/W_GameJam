@@ -32,7 +32,8 @@ public class Interact : MonoBehaviour
     public float xDiff;
     public float yDiff;
     bool canClick;
-    
+
+
 
     private void Start()
     {
@@ -58,6 +59,8 @@ public class Interact : MonoBehaviour
                     controller.isInteracting=true;
                     
                 }
+                
+
             }
         }
        else
@@ -107,7 +110,7 @@ public class Interact : MonoBehaviour
             }
         }
 
-       
+      
     }
 
     public void InteractWithObject(GameObject target)
