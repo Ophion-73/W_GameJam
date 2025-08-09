@@ -64,48 +64,65 @@ public class EnemyController : MonoBehaviour
         };
     }
 
-    public void SpawnEnemy(string EnemyPersonality, string NameObject, Vector3 position)
+    void Start()
     {
-        // Revisa si existe la lista de la palabra clave
-        if (!DictionaryEnemies.ContainsKey(EnemyPersonality))
+        SpawnRandomEnemyInRandomObject();
+    }
+
+    void SpawnRandomEnemyInRandomObject()
+    {
+        // Elige personalidad random
+        var keys = new List<string>(DictionaryEnemies.Keys);
+        string randomEnemyType = keys[Random.Range(0, keys.Count)];
+
+        // Elige prefab de esa personalidad (objeto que es)
+        List<GameObject> enemyList = DictionaryEnemies[randomEnemyType];
+        if (enemyList == null || enemyList.Count == 0)
         {
-            Debug.LogWarning($"No existe el tipo de enemigo: {EnemyPersonality}");
+            Debug.LogWarning("Lista de enemigos vacía para tipo: " + randomEnemyType);
             return;
         }
 
-        List<GameObject> listaTipo = DictionaryEnemies[EnemyPersonality];
-
-        // Elige enemigo random y lo pone en escena
-        GameObject enemyPrefab = listaTipo[Random.Range(0, listaTipo.Count)];
-        GameObject enemy = Instantiate(enemyPrefab, position, Quaternion.identity);
-
-        // Se le indica al enemigo que objeto imita
-        EnemyInfo info = enemy.GetComponent<EnemyInfo>();
-        if (info != null)
+        GameObject enemyPrefab = enemyList[Random.Range(0, enemyList.Count)];
+        EnemyInfo enemyInfoPrefab = enemyPrefab.GetComponent<EnemyInfo>();
+        if (enemyInfoPrefab == null)
         {
-            info.ObjectName = NameObject;
+            Debug.LogWarning("El prefab enemigo no tiene EnemyInfo");
+            return;
         }
 
-        // Remplaza el objeto por el enemigo
-        ReemplazarObjeto(enemy);
-    }
+        // Se guarda el tipo de objeto que es el enemigo
+        string objetoNombre = enemyInfoPrefab.ObjectName;
 
-    public void ReemplazarObjeto(GameObject Enemy)
-    {
-        EnemyInfo info = Enemy.GetComponent<EnemyInfo>();
-
-        if (info != null && DictionaryObjects.ContainsKey(info.ObjectName))
+        // Se busca la lista qeu coincide con la clave
+        if (!DictionaryObjects.ContainsKey(objetoNombre))
         {
-            List<GameObject> list = DictionaryObjects[info.ObjectName];
-            GameObject NewObject = list[Random.Range(0, list.Count)];
+            Debug.LogWarning("No existe lista de objetos para: " + objetoNombre);
+            return;
+        }
 
-            // Instanciar nuevo objeto como hijo del enemigo
-            GameObject instancia = Instantiate(NewObject, Enemy.transform);
-            instancia.transform.localPosition = Vector3.zero; // Lo centra
-        }
-        else
+        List<GameObject> objectList = DictionaryObjects[objetoNombre];
+        if (objectList == null || objectList.Count == 0)
         {
-            Debug.LogWarning("No se encontró lista para: " + info.ObjectName);
+            Debug.LogWarning("Lista de objetos vacía para: " + objetoNombre);
+            return;
         }
+
+        // Se elige uno de los objetos de esa lista
+        GameObject objetoMapa = objectList[Random.Range(0, objectList.Count)];
+
+        if (objetoMapa == null || !objetoMapa.activeSelf)
+        {
+            Debug.LogWarning("Objeto del mapa no válido o ya está inactivo");
+            return;
+        }
+
+        // Se desactiva ya elegido
+        objetoMapa.SetActive(false);
+
+        // Se instancia el enemigo
+        GameObject enemyInstance = Instantiate(enemyPrefab, objetoMapa.transform.position, Quaternion.identity);
+
+        Debug.Log($"Enemigo '{randomEnemyType}' con objeto '{objetoNombre}' ha reemplazado un objeto en la posición {objetoMapa.transform.position}");
     }
 }
