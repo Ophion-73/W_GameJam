@@ -7,14 +7,25 @@ public class MouseLook : MonoBehaviour
     public float rotacionY = 0f;
     public Transform torso;
     public float distanciaInteraccion;
+    public bool isInteracting;
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        isInteracting = false;
     }
     void Update()
     {
-        RotacionMouse();
-        RayCastInteraction();
+        if (!isInteracting)
+        {
+            Cursor.lockState = CursorLockMode.Locked;
+            RotacionMouse();
+        }
+        else
+        {
+            Cursor.lockState = CursorLockMode.Confined;
+        }
+        
+        
     }
 
     public void RotacionMouse()
@@ -32,25 +43,7 @@ public class MouseLook : MonoBehaviour
         transform.localRotation = Quaternion.Euler(rotacionX, 0f, 0f);
     }
 
-    public void RayCastInteraction()
-    {
-        Vector3 origen =  transform.position;
-        Vector3 direccion = transform.forward;
-        RaycastHit hit;
-        if (Physics.Raycast(transform.position, transform.forward, out hit, distanciaInteraccion))
-        {
-            Debug.Log("Objeto detectado: " + hit.collider.name);
-            Debug.DrawRay(origen, direccion * distanciaInteraccion, Color.yellow);
-
-            if (hit.collider.CompareTag("Interactuar"))
-            {
-                Debug.Log("Objeto Interactuable" + hit.collider.name);
-                if (Input.GetKeyDown(KeyCode.E))
-                {
-                    Debug.Log("Interactuando con Objeto");
-                }
-            }
-        }
+    
        
-    }
+    
 }

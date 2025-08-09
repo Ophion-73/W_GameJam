@@ -9,6 +9,7 @@ public class Controller : MonoBehaviour
     public float alturaAgachado = 1f;
     private float alturaObjetivo;
     private float velocidadActualY;
+    public bool isInteracting;
 
 
 
@@ -16,15 +17,16 @@ public class Controller : MonoBehaviour
     void Start()
     {
         alturaObjetivo = alturaNormal;
-
+        isInteracting = false;
     }
 
 
     void Update()
     {
-        Movimiento();
-
-
+        if(!isInteracting)
+        {
+            Movimiento();
+        }
     }
 
 
