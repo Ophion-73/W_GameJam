@@ -1,26 +1,47 @@
 using UnityEngine;
 
+[RequireComponent(typeof(Rigidbody))]
 public class CarnivoroScript : MonoBehaviour
 {
-    public float rotationSpeed = 90f;      // grados por segundo para rotar
-    public float floatAmplitude = 0.5f;    // altura máxima del movimiento vertical
-    public float floatFrequency = 1f;      // velocidad del movimiento vertical
+    public float Speed = 0.2f;
+    public float obstacleDetectionDistance = 2f;
+    public float avoidanceForce = 2f;
 
-    private Vector3 startPos;
+    private Rigidbody rb;
 
     void Start()
     {
-        startPos = transform.position;  // Guardamos la posición inicial
+        rb = GetComponent<Rigidbody>();
     }
 
-    void Update()
+    void FixedUpdate()
     {
-        // Girar hacia la derecha
-        transform.Rotate(0, rotationSpeed * Time.deltaTime, 0);
+        if (MeatManager.Instance == null || !MeatManager.Instance.meatIsActive || MeatManager.Instance.meatTransform == null)
+            return;
 
-        // Movimiento arriba y abajo con Seno
-        float newY = startPos.y + Mathf.Sin(Time.time * floatFrequency) * floatAmplitude;
+        Vector3 targetPos = MeatManager.Instance.meatTransform.position;
+        float distanceToMeat = Vector3.Distance(transform.position, targetPos);
+        if (distanceToMeat < 0.1f)
+            return;
 
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        Vector3 direction = (targetPos - transform.position).normalized;
+
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, transform.forward, out hit, obstacleDetectionDistance))
+        {
+            if (hit.collider.CompareTag("Obstacle"))
+            {
+                Vector3 avoidDir = Vector3.Cross(Vector3.up, hit.normal).normalized;
+                direction += avoidDir * avoidanceForce;
+            }
+        }
+
+        rb.MovePosition(transform.position + direction.normalized * Speed * Time.fixedDeltaTime);
+
+        if (direction != Vector3.zero)
+        {
+            Quaternion lookRotation = Quaternion.LookRotation(direction);
+            rb.MoveRotation(lookRotation);
+        }
     }
 }
