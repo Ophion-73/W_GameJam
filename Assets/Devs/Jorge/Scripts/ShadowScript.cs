@@ -18,7 +18,7 @@ public class ShadowScript : MonoBehaviour
     private bool shaking = false;
     private float shakeElapsed = 0f;
 
-    private bool isDead = false;
+    private bool shakeForever = false;
 
     void Start()
     {
@@ -27,7 +27,11 @@ public class ShadowScript : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (shakeForever)
+        {
+            Shake();
+            return;
+        }
 
         timer += Time.deltaTime;
 
@@ -42,8 +46,7 @@ public class ShadowScript : MonoBehaviour
         {
             if (shakeElapsed < shakeDuration)
             {
-                Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
-                transform.position = originalPosition + randomOffset;
+                Shake();
                 shakeElapsed += Time.deltaTime;
             }
             else
@@ -69,7 +72,9 @@ public class ShadowScript : MonoBehaviour
         }
         else if (interactionCount == 2)
         {
-            Die();
+            shakeForever = true;
+            shaking = true;
+            shakeElapsed = 0f;
         }
     }
 
@@ -118,13 +123,10 @@ public class ShadowScript : MonoBehaviour
         Debug.Log($"ShadowScript se transformó en nuevo objeto {nuevoObjeto.name}");
     }
 
-    private void Die()
+    void Shake()
     {
-        if (currentObject != null && spawner != null)
-        {
-            spawner.ReleaseObject(currentObject);
-        }
-        Destroy(gameObject);
+        Vector3 randomOffset = Random.insideUnitSphere * shakeMagnitude;
+        transform.position = originalPosition + randomOffset;
     }
 
     void CopyMeshAndTransform(GameObject source, GameObject target)
