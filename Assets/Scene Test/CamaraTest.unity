@@ -505,8 +505,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   volume: {fileID: 1477422317}
-  AlphaController: {fileID: 2100767558}
+  alphaController: {fileID: 2100767558}
   bang: {fileID: 98281737}
+  flashVisual: {fileID: 12899861}
+  imageVisual: {fileID: 87406837}
+  fadeSpeed: 2
 --- !u!114 &466830154
 MonoBehaviour:
   m_ObjectHideFlags: 0
