@@ -8888,6 +8888,7 @@ GameObject:
   - component: {fileID: 1237810989}
   - component: {fileID: 1237810990}
   - component: {fileID: 1237810991}
+  - component: {fileID: 1237810992}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -9026,7 +9027,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -9045,6 +9046,20 @@ MonoBehaviour:
   meatPrefab: {fileID: 4277453602129563905, guid: c2aff53e41e229b428d7f867e3a2bf52, type: 3}
   throwPoint: {fileID: 1056873629}
   throwForce: 5
+--- !u!114 &1237810992
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1237810984}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e848f96c592912045be613175a4ff4fa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactionDistance: 3
+  interactKey: 104
 --- !u!1 &1243132406
 GameObject:
   m_ObjectHideFlags: 0
@@ -9953,10 +9968,10 @@ MonoBehaviour:
   HiddenPrefab: {fileID: 9120473134807710615, guid: 3bb02a3f7c283b74289cce558aa4bf92, type: 3}
   MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
   ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
-  NuCarnivoros: 3
+  NuCarnivoros: 0
   NuHidden: 0
   NuMelodicos: 0
-  NuShadow: 0
+  NuShadow: 1
   RoomObjects:
   - {fileID: 131095338}
   - {fileID: 1898764804}
@@ -10081,6 +10096,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meatTransform: {fileID: 8603950435291281569, guid: c2aff53e41e229b428d7f867e3a2bf52, type: 3}
+  meatIsActive: 0
 --- !u!1 &1400665213
 GameObject:
   m_ObjectHideFlags: 0

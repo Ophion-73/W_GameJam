@@ -1,20 +1,95 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class ShadowScript : MonoBehaviour
 {
-    public float amplitude = 0.5f;
-    public float frequency = 1f;
+    public EnemySpawner spawner;
+    private int interactionCount = 0;
+    private GameObject currentObject;
 
-    private Vector3 startPos;
-
-    void Start()
+    public void SetCurrentObject(GameObject obj)
     {
-        startPos = transform.position;
+        currentObject = obj;
     }
 
-    void Update()
+    public void Interact()
     {
-        float newY = startPos.y + Mathf.Sin(Time.time * frequency) * amplitude;
-        transform.position = new Vector3(transform.position.x, newY, transform.position.z);
+        interactionCount++;
+
+        if (interactionCount == 1)
+        {
+            TransformToAnotherObject();
+        }
+        else if (interactionCount == 2)
+        {
+            Die();
+        }
+    }
+
+    private void TransformToAnotherObject()
+    {
+        if (spawner == null)
+        {
+            Debug.LogWarning("Spawner no asignado en ShadowScript");
+            return;
+        }
+
+        List<GameObject> posiblesObjetos = spawner.RoomObjects;
+
+        List<GameObject> libres = new List<GameObject>();
+        foreach (var obj in posiblesObjetos)
+        {
+            if (!spawner.IsObjectOccupied(obj) && obj != currentObject && obj.activeSelf)
+            {
+                libres.Add(obj);
+            }
+        }
+
+        if (libres.Count == 0)
+        {
+            Debug.LogWarning("No hay objetos libres para transformar el ShadowScript");
+            return;
+        }
+
+        GameObject nuevoObjeto = libres[Random.Range(0, libres.Count)];
+
+        if (currentObject != null)
+            spawner.ReleaseObject(currentObject);
+        spawner.OccupyObject(nuevoObjeto);
+
+        if (currentObject != null)
+            currentObject.SetActive(true);
+
+        nuevoObjeto.SetActive(false);
+
+        CopyMeshAndTransform(nuevoObjeto, gameObject);
+
+        currentObject = nuevoObjeto;
+
+        Debug.Log($"ShadowScript se transformó en nuevo objeto {nuevoObjeto.name}");
+    }
+
+    private void Die()
+    {
+        if (currentObject != null && spawner != null)
+        {
+            spawner.ReleaseObject(currentObject);
+        }
+        Destroy(gameObject);
+    }
+
+    void CopyMeshAndTransform(GameObject source, GameObject target)
+    {
+        target.transform.position = source.transform.position;
+        target.transform.rotation = source.transform.rotation;
+        target.transform.localScale = source.transform.localScale;
+
+        MeshFilter sourceMF = source.GetComponent<MeshFilter>();
+        MeshFilter targetMF = target.GetComponent<MeshFilter>();
+
+        if (sourceMF != null && targetMF != null)
+        {
+            targetMF.mesh = sourceMF.mesh;
+        }
     }
 }
