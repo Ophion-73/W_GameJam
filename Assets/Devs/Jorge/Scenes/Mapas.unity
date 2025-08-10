@@ -8969,6 +8969,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tocandoFlauta: 0
   musicNotes: {fileID: 2120691784}
+  NotasMimic: 0
 --- !u!54 &1237810990
 Rigidbody:
   m_ObjectHideFlags: 0
