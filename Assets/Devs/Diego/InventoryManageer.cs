@@ -23,6 +23,8 @@ public class InventoryManageer : MonoBehaviour
     public string objectTag;
     public string mimicTag;
 
+    public Flauta flauta;
+
     private void Start()
     {
         items[0].GetComponent<MeshRenderer>().material = numTex[0];
@@ -30,6 +32,26 @@ public class InventoryManageer : MonoBehaviour
     private void Update()
     {
         UseItem();
+        RecogerItem();
+    }
+
+    public void RecogerItem()
+    {
+        if (Physics.Raycast(new Ray(cameraPosition.position, cameraPosition.forward), out RaycastHit hit, rayLength, objects) && Input.GetMouseButtonDown(1))
+        {
+            GameObject hitGameObject = hit.collider.gameObject;
+            if (hitGameObject.CompareTag(mimicTag))
+            {
+                //Aqui va el jumpscare
+                Debug.Log("vas a mamar");
+            }
+            if (hitGameObject.CompareTag(objectTag))
+            {
+                puntuacion += hitGameObject.GetComponent<Precio>().presio;
+                hitGameObject.SetActive(false);
+                Debug.Log("Bling bling");
+            }
+        }
     }
 
     public void ChangeActiveItem(int index)
@@ -76,8 +98,9 @@ public class InventoryManageer : MonoBehaviour
     }
     public void UseFlute()
     {
-        //funcionalidad de flauta
+        flauta.FuncionFlauta();
     }
+
     private void UseCandle()
     {
         if (Physics.Raycast(new Ray(cameraPosition.position, cameraPosition.forward), out RaycastHit hit, rayLength, objects))
@@ -85,7 +108,7 @@ public class InventoryManageer : MonoBehaviour
             GameObject hitGameObject = hit.collider.gameObject;
             if (hitGameObject.CompareTag(mimicTag) && hitGameObject.GetComponent<ShadowScript>() != null)
             {
-                //hitGameObject.GetComponent<ShadowScript>()."aqui va el metodo para dacudir a los bros";
+                hitGameObject.GetComponent<ShadowScript>().Interact();
             }
         }
     }

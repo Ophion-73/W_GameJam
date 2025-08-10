@@ -3,7 +3,6 @@ using UnityEngine;
 
 public class MelodicoScript : MonoBehaviour
 {
-    public float speed = 90f;
     public Flauta flautascript;
     public GameObject musicNotes;
     private Coroutine respuestaCoroutine;
@@ -27,12 +26,7 @@ public class MelodicoScript : MonoBehaviour
         }
         musicNotes.SetActive(false);
     }
-    void Update()
-    {
-        transform.Rotate(0, speed * Time.deltaTime, 0);
 
-
-    }
 
     void OnTriggerStay(Collider other)
     {

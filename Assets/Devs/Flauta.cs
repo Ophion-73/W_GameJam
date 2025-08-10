@@ -16,13 +16,13 @@ public class Flauta : MonoBehaviour
 
     void Update()
     {
-        FuncionFlauta();
+        //FuncionFlauta();
     }
 
 
     public void FuncionFlauta()
     {
-        if (Input.GetKeyDown(KeyCode.F) && !tocandoFlauta && !NotasMimic)
+        if (Input.GetMouseButtonDown(0) && !tocandoFlauta && !NotasMimic)
         {
             tocandoFlauta = true;
             NotasMimic = true;

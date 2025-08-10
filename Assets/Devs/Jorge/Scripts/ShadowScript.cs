@@ -69,10 +69,10 @@ public class ShadowScript : MonoBehaviour
         if (interactionCount == 1)
         {
             TransformToAnotherObject();
+            shakeForever = true;
         }
         else if (interactionCount == 2)
         {
-            shakeForever = true;
             shaking = true;
             shakeElapsed = 0f;
         }
