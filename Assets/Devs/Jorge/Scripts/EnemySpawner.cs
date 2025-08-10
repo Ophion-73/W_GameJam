@@ -125,6 +125,7 @@ public class EnemySpawner : MonoBehaviour
         target.transform.rotation = source.transform.rotation;
         target.transform.localScale = source.transform.localScale;
 
+
         MeshFilter sourceMF = source.GetComponent<MeshFilter>();
         MeshFilter targetMF = target.GetComponent<MeshFilter>();
 
@@ -135,6 +136,7 @@ public class EnemySpawner : MonoBehaviour
 
         // Aqui ira lo de materiales en un futuro
     }
+
 
     public bool IsObjectOccupied(GameObject obj)
     {
@@ -150,5 +152,4 @@ public class EnemySpawner : MonoBehaviour
     {
         UsedObjects.Remove(obj);
     }
-
 }

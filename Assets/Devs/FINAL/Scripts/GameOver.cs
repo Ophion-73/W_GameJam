@@ -7,10 +7,12 @@ public class GameOver : MonoBehaviour
     public Controller controller;
     public MouseLook ML;
     public GameObject PanelGanaste;
+    public GameObject PanelPerdiste;
 
     void Start()
     {
         PanelGanaste.SetActive(false);
+        PanelPerdiste.SetActive(false);
     }
 
     void Update()
@@ -27,6 +29,11 @@ public class GameOver : MonoBehaviour
             controller.isInteracting = true;
             ML.isInteracting = true;
         }
+    }
+
+    public void PerdisteCheck()
+    {
+
     }
 
     public void RegresoInicio()

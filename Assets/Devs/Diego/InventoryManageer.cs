@@ -26,12 +26,14 @@ public class InventoryManageer : MonoBehaviour
     public Flauta flauta;
     public bool canUse;
     public int ContMimics;
+    public bool Moristes;
 
     private void Start()
     {
         items[0].GetComponent<MeshRenderer>().material = numTex[0];
         canUse = true;
         ContMimics = monsterQ;
+        Moristes = false;
     }
     private void Update()
     {
@@ -50,6 +52,7 @@ public class InventoryManageer : MonoBehaviour
             if (hitGameObject.CompareTag(mimicTag))
             {
                 //Aqui va el jumpscare
+                Moristes = true;
                 Debug.Log("vas a mamar");
             }
             if (hitGameObject.CompareTag(objectTag))
