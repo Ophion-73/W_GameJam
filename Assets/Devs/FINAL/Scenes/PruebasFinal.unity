@@ -8255,6 +8255,8 @@ GameObject:
   - component: {fileID: 1297730406}
   - component: {fileID: 1297730409}
   - component: {fileID: 1297730410}
+  - component: {fileID: 1297730412}
+  - component: {fileID: 1297730411}
   m_Layer: 5
   m_Name: Canvas
   m_TagString: Untagged
@@ -8376,6 +8378,117 @@ MonoBehaviour:
   ML: {fileID: 1861782103}
   PanelGanaste: {fileID: 1131252302}
   PanelPerdiste: {fileID: 0}
+--- !u!114 &1297730411
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297730404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 33d3d7aed0164e04bae2ff7767d7f79d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  clipToPlay: {fileID: 8300000, guid: f170c27244af0414a9aa644fbe75aab5, type: 3}
+  volume: 1
+--- !u!82 &1297730412
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1297730404}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_Resource: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!1 &1316582497
 GameObject:
   m_ObjectHideFlags: 0
@@ -8940,10 +9053,10 @@ MonoBehaviour:
   HiddenPrefab: {fileID: 9120473134807710615, guid: 3bb02a3f7c283b74289cce558aa4bf92, type: 3}
   MelodicoPrefab: {fileID: 6658476728803870978, guid: 74652b69ec7156148b2fa7accd044f29, type: 3}
   ShadowPrefab: {fileID: 5817657843497298283, guid: 102cc39fca3953b4b81162fcf8a00cd4, type: 3}
-  NuCarnivoros: 0
+  NuCarnivoros: 1
   NuHidden: 1
   NuMelodicos: 1
-  NuShadow: 0
+  NuShadow: 1
   RoomObjects:
   - {fileID: 449545469}
   - {fileID: 1525096985}
