@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 5245494970734023220}
   m_Layer: 0
   m_Name: Shadow
-  m_TagString: Untagged
+  m_TagString: Mimic
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -129,8 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1a5bbec7f8ba7747b98c3ad0314125a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  amplitude: 0.5
-  frequency: 1
+  spawner: {fileID: 0}
 --- !u!114 &-6245713224353622081
 MonoBehaviour:
   m_ObjectHideFlags: 0

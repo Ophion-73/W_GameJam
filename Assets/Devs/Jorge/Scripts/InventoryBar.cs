@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 public class InventoryBar : MonoBehaviour
 {
-    public Image[] Slots;
+    public RawImage[] Slots;
     private int CurrentSlot = 0;
 
     public InventoryManageer IM;

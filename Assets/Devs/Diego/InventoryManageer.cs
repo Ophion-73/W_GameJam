@@ -1,9 +1,11 @@
 using System;
 using Unity.VisualScripting;
+using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 
 public class InventoryManageer : MonoBehaviour
 {
+    public Carne carne;
     public int itemIndex;
     public GameObject[] items;
     [Header("General")]
@@ -32,12 +34,17 @@ public class InventoryManageer : MonoBehaviour
 
     public void ChangeActiveItem(int index)
     {
+        if (index < 0 || index >= items.Length) return;
         itemIndex = index;
-        items[itemIndex + 1].SetActive(false);
-        items[itemIndex - 1].SetActive(false);
+
+        for(int i = 0; i < items.Length; i++)
+        {
+            items[i].SetActive(false);
+        }
+
         items[itemIndex].SetActive(true);
-        
     }
+
     public void UseItem()
     {
         if(Input.GetMouseButtonDown(0))
@@ -85,7 +92,7 @@ public class InventoryManageer : MonoBehaviour
 
     private void UseMeat()
     {
-        //combinar con el de jorge
+        carne.ThrowMeat();
     }
 
     public void UseKnife()
@@ -109,5 +116,6 @@ public class InventoryManageer : MonoBehaviour
     public void UseMimicDetector()
     {
         items[0].GetComponent<MeshRenderer>().material = numTex[monsterQ];
+        Debug.Log("Detectando");
     }
 }

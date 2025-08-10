@@ -26,12 +26,12 @@ public class EnemySpawner : MonoBehaviour
 
     private HashSet<GameObject> UsedObjects = new HashSet<GameObject>();
 
-    //public InventoryManageer inventoryM;
+    public InventoryManageer inventoryM;
 
     void Start()
     {
         SpawnEnemigos();
-        //inventoryM.monsterQ = (NuCarnivoros + NuHidden + NuMelodicos + NuShadow);
+        inventoryM.monsterQ = (NuCarnivoros + NuHidden + NuMelodicos + NuShadow);
     }
 
     public void SpawnEnemigos()

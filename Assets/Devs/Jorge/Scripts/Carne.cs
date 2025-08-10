@@ -6,7 +6,7 @@ public class Carne : MonoBehaviour
     public Transform throwPoint;
     public float throwForce = 5f;
 
-    private GameObject currentMeat;
+    public GameObject currentMeat;
 
     void Start()
     {
@@ -15,13 +15,10 @@ public class Carne : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ThrowMeat();
-        }
+
     }
 
-    void ThrowMeat()
+    public void ThrowMeat()
     {
         if (currentMeat != null) return;
 
