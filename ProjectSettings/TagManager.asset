@@ -7,6 +7,7 @@ TagManager:
   - Interactuar
   - camPos
   - Selected
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -26,9 +26,12 @@ public class EnemySpawner : MonoBehaviour
 
     private HashSet<GameObject> UsedObjects = new HashSet<GameObject>();
 
+    //public InventoryManageer inventoryM;
+
     void Start()
     {
         SpawnEnemigos();
+        //inventoryM.monsterQ = (NuCarnivoros + NuHidden + NuMelodicos + NuShadow);
     }
 
     public void SpawnEnemigos()
@@ -101,6 +104,15 @@ public class EnemySpawner : MonoBehaviour
 
             CopyMeshAndTransform(objeto, EnemyInstantiate);
 
+
+            ShadowScript shadow = EnemyInstantiate.GetComponent<ShadowScript>();
+            if (shadow != null)
+            {
+                shadow.spawner = this;
+                shadow.SetCurrentObject(objeto);
+            }
+
+
             Debug.Log($"Instanciado {prefab.name} en objeto {objeto.name}");
 
             InstantiateEnemies++;
@@ -123,4 +135,20 @@ public class EnemySpawner : MonoBehaviour
 
         // Aqui ira lo de materiales en un futuro
     }
+
+    public bool IsObjectOccupied(GameObject obj)
+    {
+        return UsedObjects.Contains(obj);
+    }
+
+    public void OccupyObject(GameObject obj)
+    {
+        UsedObjects.Add(obj);
+    }
+
+    public void ReleaseObject(GameObject obj)
+    {
+        UsedObjects.Remove(obj);
+    }
+
 }
