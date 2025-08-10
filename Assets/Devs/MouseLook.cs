@@ -8,6 +8,8 @@ public class MouseLook : MonoBehaviour
     public Transform torso;
     public float distanciaInteraccion;
     public bool isInteracting;
+
+    
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
