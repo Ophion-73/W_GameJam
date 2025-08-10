@@ -8,17 +8,18 @@ public class Interact : MonoBehaviour
     public Controller controller;
     Ray ray;
     [Header("Interact Behaviour")]
-    
+
     public float rayLengthInteract;
     public Transform originalCameraPos;
     public Transform cameraPos;
     public LayerMask interactableObj;
     public KeyCode interactKey;
-    
-    
+    public InventoryManageer iE;
+
+
 
     [Header("Rotation Behaviour")]
-    
+
     public float rayLengthMove;
     public GameObject staticPart;
     public GameObject movablePart;
@@ -44,40 +45,42 @@ public class Interact : MonoBehaviour
     private void Update()
     {
         float raylength;
-       if(!isInteracting)
+        if (!isInteracting)
         {
             raylength = rayLengthInteract;
             ray = new Ray(cameraPos.position, cameraPos.forward);
             Debug.DrawRay(ray.origin, ray.direction * rayLengthInteract, Color.red);
-            if (Physics.Raycast(ray , out RaycastHit hit, raylength, interactableObj))
+            if (Physics.Raycast(ray, out RaycastHit hit, raylength, interactableObj))
             {
-                if(Input.GetKeyDown(interactKey))
+                if (Input.GetKeyDown(interactKey))
                 {
                     InteractWithObject(hit.collider.gameObject);
-                    isInteracting=true;
+                    isInteracting = true;
                     gameObject.GetComponent<MouseLook>().isInteracting = true;
-                    controller.isInteracting=true;
-                    
+                    controller.isInteracting = true;
+                    iE.canUse = false;
+
                 }
-                
+
 
             }
         }
-       else
+        else
         {
             if (Input.GetKeyDown(interactKey))
             {
                 GetComponent<Camera>().transform.position = originalCameraPos.position;
                 GetComponent<Camera>().transform.rotation = originalCameraPos.rotation;
                 isInteracting = false;
-                gameObject.GetComponent<MouseLook>().isInteracting=false;
+                gameObject.GetComponent<MouseLook>().isInteracting = false;
                 controller.isInteracting = false;
+                iE.canUse = true;
             }
-            
+
             raylength = rayLengthMove;
             ray = Camera.main.ScreenPointToRay(Input.mousePosition);
             Debug.DrawRay(ray.origin, ray.direction * rayLengthInteract, Color.red);
-            
+
             if (Physics.Raycast(ray, out RaycastHit hit, raylength, movableObj))
             {
                 if (Input.GetMouseButtonDown(0))
@@ -97,20 +100,20 @@ public class Interact : MonoBehaviour
             }
             if (Input.GetMouseButtonUp(0) && canClick)
             {
-                
+
                 clickPos = new Vector2(0, 0);
                 continousMousePos = new Vector2(0, 0);
                 xDiff = 0;
                 yDiff = 0;
-                
-                
+
+
                 canClick = false;
                 movablePart.GetComponent<Interactable>().Close();
                 movablePart = null;
             }
         }
 
-      
+
     }
 
     public void InteractWithObject(GameObject target)

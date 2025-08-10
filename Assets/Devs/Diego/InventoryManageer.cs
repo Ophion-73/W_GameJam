@@ -24,15 +24,20 @@ public class InventoryManageer : MonoBehaviour
     public string mimicTag;
 
     public Flauta flauta;
+    public bool canUse;
 
     private void Start()
     {
         items[0].GetComponent<MeshRenderer>().material = numTex[0];
+        canUse = true;
     }
     private void Update()
     {
-        UseItem();
-        RecogerItem();
+        if (canUse)
+        {
+            UseItem();
+            RecogerItem();
+        }
     }
 
     public void RecogerItem()

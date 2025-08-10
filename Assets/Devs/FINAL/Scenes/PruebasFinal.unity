@@ -10491,7 +10491,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1812635036}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -10623,6 +10623,7 @@ MonoBehaviour:
   objectTag: Obstacle
   mimicTag: Mimic
   flauta: {fileID: 1812635047}
+  canUse: 0
 --- !u!114 &1812635044
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11026,7 +11027,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isInteracting: 0
-  controller: {fileID: 0}
+  controller: {fileID: 1812635037}
   rayLengthInteract: 10
   originalCameraPos: {fileID: 567358360}
   cameraPos: {fileID: 1861782101}
@@ -11034,6 +11035,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   interactKey: 101
+  iE: {fileID: 1812635043}
   rayLengthMove: 10
   staticPart: {fileID: 0}
   movablePart: {fileID: 0}
@@ -11118,6 +11120,14 @@ PrefabInstance:
     - target: {fileID: 371757218655438672, guid: bbe42de3f7caac9468f57bc561c4c180, type: 3}
       propertyPath: m_Name
       value: Cofre
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485793695826792590, guid: bbe42de3f7caac9468f57bc561c4c180, type: 3}
+      propertyPath: isMimic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1485793695826792590, guid: bbe42de3f7caac9468f57bc561c4c180, type: 3}
+      propertyPath: threshHoldAngle
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 7580532141180212120, guid: bbe42de3f7caac9468f57bc561c4c180, type: 3}
       propertyPath: m_LocalPosition.x
