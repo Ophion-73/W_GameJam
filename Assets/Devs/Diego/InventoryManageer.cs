@@ -25,11 +25,13 @@ public class InventoryManageer : MonoBehaviour
 
     public Flauta flauta;
     public bool canUse;
+    public int ContMimics;
 
     private void Start()
     {
         items[0].GetComponent<MeshRenderer>().material = numTex[0];
         canUse = true;
+        ContMimics = monsterQ;
     }
     private void Update()
     {
@@ -131,6 +133,7 @@ public class InventoryManageer : MonoBehaviour
             if (hitGameObject.CompareTag(mimicTag))
             {
                 hitGameObject.SetActive(false);
+                ContMimics--;
                 Debug.Log("Mataste un mmimic");
             }
             if(hitGameObject.CompareTag(objectTag))
