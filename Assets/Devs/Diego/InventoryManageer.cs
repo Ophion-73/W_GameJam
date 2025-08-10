@@ -15,7 +15,7 @@ public class InventoryManageer : MonoBehaviour
 
 
     [Header("Cuchillo")]
-    public Transform camera;
+    public Transform cameraPosition;
     public float rayLength;
     public LayerMask objects;
     public string objectTag;
@@ -73,7 +73,7 @@ public class InventoryManageer : MonoBehaviour
     }
     private void UseCandle()
     {
-        if (Physics.Raycast(new Ray(camera.position, camera.forward), out RaycastHit hit, rayLength, objects))
+        if (Physics.Raycast(new Ray(cameraPosition.position, cameraPosition.forward), out RaycastHit hit, rayLength, objects))
         {
             GameObject hitGameObject = hit.collider.gameObject;
             if (hitGameObject.CompareTag(mimicTag) && hitGameObject.GetComponent<ShadowScript>() != null)
@@ -90,7 +90,7 @@ public class InventoryManageer : MonoBehaviour
 
     public void UseKnife()
     {
-        if(Physics.Raycast(new Ray(camera.position,camera.forward), out RaycastHit hit,  rayLength, objects))
+        if(Physics.Raycast(new Ray(cameraPosition.position,cameraPosition.forward), out RaycastHit hit,  rayLength, objects))
         {
             GameObject hitGameObject = hit.collider.gameObject;
             if (hitGameObject.CompareTag(mimicTag))

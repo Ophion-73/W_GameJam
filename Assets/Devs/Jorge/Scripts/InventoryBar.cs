@@ -6,6 +6,8 @@ public class InventoryBar : MonoBehaviour
     public Image[] Slots;
     private int CurrentSlot = 0;
 
+    public InventoryManageer IM;
+
     void Start()
     {
         UpdateSlot();
@@ -36,7 +38,10 @@ public class InventoryBar : MonoBehaviour
         for (int i = 0; i < Slots.Length; i++)
         {
             if (i == CurrentSlot)
+            {
                 Slots[i].color = Color.yellow;
+                IM.ChangeActiveItem(CurrentSlot);
+            }
             else
                 Slots[i].color = Color.white;
         }

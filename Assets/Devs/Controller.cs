@@ -11,6 +11,8 @@ public class Controller : MonoBehaviour
     private float velocidadActualY;
     public bool isInteracting;
 
+    public GameObject CameraGO;
+
 
 
 
